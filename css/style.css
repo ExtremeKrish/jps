@@ -76,6 +76,9 @@
 {
   margin:0
 }
+.copyright-text a{
+    text-decoration: underline;
+}
 @media (max-width:991px)
 {
   .site-footer [class^=col-]
@@ -236,14 +239,15 @@
 
             #drawer a {
                 padding: 10px 20px;
-                color: 000;
+                color:#000;
                 background: transparent;
                 display: flex;
-                font-size: 16.8px;
+                font-size: 15px;
                 align-items: center;
                 transition: 200ms linear;
                 padding-right: 0;
                 border-bottom: 1px solid #D29657;
+                text-decoration: none;
             }
 
             #drawer a:hover {
@@ -256,7 +260,7 @@
 
             #drawer>a>span {
                 margin: 0 14px 0 4px;
-                font-size: 22px;
+                font-size: 20px;
             }
 
             #drawer>a>i {
