@@ -297,3 +297,51 @@
             main{
                 margin: 56px 0;
             }
+            .tab-container{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            .tab-bar{
+                display: flex;
+                width: 100%;
+            }
+            .tab-bar ul{
+                list-style: none;
+                padding: 0;
+                margin:0;
+                display: flex;
+                width: 100%;
+                
+            }
+            .tab-bar ul li{
+                display: flex;
+                padding: 16px;
+                flex-grow: 1;
+                margin: 0;
+                align-items: center;
+                justify-content: center;
+            }
+            .tab-bar ul li.active{
+                background-image: url('../images/toolbar-bg.jpg');
+            }
+            .tab-content{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                background-image: url('../images/toolbar-bg.jpg');
+                padding: 8px;
+            }
+            @media (min-width:767px){
+            main.first-resp{
+                display: flex;
+                flex: 1;
+            }
+            main.first-resp section{
+                width: 50%;
+            }
+            }
+            .site-footer{
+                width: 100%;
+                
+            }

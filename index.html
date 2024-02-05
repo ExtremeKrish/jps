@@ -50,7 +50,9 @@
             </a>
 
         </section>
-        <main> 
+        <main class="first-resp"> 
+        <section>
+            <!--Tab to edit-->
         
        <!-- #region Jssor Slider Begin -->
     <!-- Generator: Jssor Slider Composer -->
@@ -198,7 +200,32 @@
     <script type="text/javascript">jssor_1_slider_init();
     </script>
 
+    <!--Tab to edit-->
+</section>
+<div class="tab-container">
+    <div class="tab-bar">
+        <ul>
+            <li class="active">Curriculum</li>
+            <li>Notices</li>
+            <li>Academic</li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <section id="tab1">
+            1
+        </section>
+        <section id="tab2" style="display: none">
+            2
+        </section>
+        <section id="tab3" style="display: none">
+            3
+        </section>
+    </div>
+</div>
+
+
 </main>
+
         <!-- Site footer -->
         <footer class="site-footer">
             <div class="container">
@@ -332,6 +359,26 @@
                     drawer_open = false;
                 }
             }
+            // Get all the tab elements
+const tabItems = document.querySelectorAll('.tab-bar ul li');
+const tabSections = document.querySelectorAll('.tab-content section');
+
+// Loop through each tab item
+tabItems.forEach((tab, index) => {
+    // Add click event listener to each tab
+    tab.addEventListener('click', () => {
+        // Remove 'active' class from all tab items and sections
+        tabItems.forEach(item => item.classList.remove('active'));
+        tabSections.forEach(section => section.style.display = 'none');
+        
+        // Add 'active' class to the clicked tab item
+        tab.classList.add('active');
+        
+        // Show the corresponding tab section
+        tabSections[index].style.display = 'block';
+    });
+});
+
         </script>
     </body>
 </html>
