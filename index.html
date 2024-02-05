@@ -1,213 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drawer Example</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-    /* Disable tap highlight on all elements */
-    * {
-    -webkit-tap-highlight-color: transparent; /* Disable tap highlight on WebKit-based browsers (e.g., Safari, Chrome) */
-    tap-highlight-color: transparent; /* Disable tap highlight on non-WebKit browsers */
-    }
-    
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-background-image: url('body-bg.jpg');
-            /* Adjust background properties as needed */
-
-font-family:poppins;
-
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-background-image: url('header-bg.jpg');
-            color: black;
-padding:0 16px;
-            height:56px;
-            position:fixed;
-top:0;
-            left:0;
-            right:0;
-        }
-        .title {
-            font-size: 20px;
-                        font-weight:450;
-                        padding:0;
-                        margin:0;
-        }
-        .hamburger {
-            cursor: pointer;
-            font-size: 24px;
-            margin-right:8px;
-            padding:0;
-            margin:0;
-        }
-        .drawer-container {
-            position: relative;
-        }
-        .drawer {
-            position: fixed;
-            top: 0;
-            right: -262px;
-            width: 250px;
-            height: 100%;
-background-image: url('body-bg.jpg');
-border-left:12px solid #735402;
-            transition: right 0.3s;
-            z-index: 1;
-
-        }
-        .drawer-inner {
-            padding: 0px;
-        }
-        .drawer-inner ul{
-        margin:0;
-        padding:0;
-        list-style:none;
-        }
-        .drawer-inner ul span{
-                border-bottom:1px solid #D29657;
-                display:flex;
-                padding:8px;
-                justify-content:center;
-                background-image:url('toolbar-bg.jpg');
-        }
-        .drawer-inner li{
-        padding:14px 16px;
-        border-bottom:1px solid #D29657;
-        }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0);
-            transition: background-color 0.5s;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .overlay.active {
-            background-color: rgba(0, 0, 0, 0.2);
-            pointer-events: auto;
-        }
-        header {
-        background-image:url('toolbar-bg.jpg');
-        padding:16px;
-                color:#573F02;
-                margin-top:56px;
-        }
-        h2{
-        font-weight:400;
-        margin:0;
-        padding-bottom:14px;
-
-        }
-        button {
-        padding:8px;
-        border:0px solid black;
-        border-radius:4px;
-        font-family:poppins;
-        margin-top:16px;
-        background:#25656E;
-        color:white;
-        }
-        .book-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(20px, 2fr));
-        gap: 1.5rem;
-        justify-content: center;
-padding:16px;
-        }
-        
-        .book-banner {
-        background-color: #f2f2f2;
-
-        text-align: center;
- 
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        width:100px;
-        height:160px;
-        }
-        
-        @media screen and (max-width: 768px) {
-        .book-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        }
-        }
-        section ol li {
-
-        padding:4px 16px 4px 10px;
-
-        }
-        ol li span{
-        font-weight:450;
-        }
-        ol li p{
-        text-align: justify;
-        }
-        img{
-          width: calc(100% - 30px);
-          position: relative;
-          display: flex;
-          margin-bottom: 12px;
-        }
-    </style>
-</head>
-<body>
-    <div class="navbar">
-        <div class="title">Jaipur Public School</div>
-        <div class="hamburger" onclick="toggleDrawer()">☰</div>
-    </div>
-    <div class="drawer-container">
-        <div class="overlay" onclick="closeDrawer()"></div>
-        <div class="drawer">
-            <div class="drawer-inner">
-<ul>
-<span>Main Menu Navigation</span>
-<li>Library</li>
-<li>Index</li>
-<li>Tools</li>
-<li>Donate</li>
-<li>Contact Us</li>
-</ul>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <!-------NavBar-Start------->
+        <nav id="toolbar">
+            <span>Jaipur Public School</span>
+            <svg class="menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-menu" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+            </svg>
+        </nav>
+        <!-------NavBar-End------->
+        <section id="drawer">
+            <a>
+                <span class="material-icons"> dashboard</span>Home </a>
+            <label>Main</label>
+            <a>
+                <span class="material-icons"> dashboard</span> About Us </a>
+            <a>
+                <span class="material-icons"> dashboard</span> Infrastructure </a>
+            <a onclick="expand('.exp2')">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <p style="padding:0;margin:0;flex-grow:1;">Circulars</p>
+                <span class="material-icons" id="expind" style="transition:200ms linear"> chevron_right </span>
+            </a>
+            <div class="exp2 exp" style="display:none">
+                <a>API Keys </a>
+                <a>Report </a>
             </div>
-        </div>
-    </div>
+            <a>
+                <span class="material-icons"> dashboard</span> Gallary </a>
+            <a>
+                <i class="fa fa-key" aria-hidden="true"></i>Admission </a>
+            <a>
+                <i class="fa fa-flag" aria-hidden="true"></i>Results </a>
+            <a>
+                <i class="fa fa-code" aria-hidden="true"></i>Projects </a>
+            <a>
+                <i class="fa fa-area-chart" aria-hidden="true"></i>Team Stats </a>
+            <a onclick="expand('.exp1')">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <p style="padding:0;margin:0;flex-grow:1;">Users</p>
+                <span class="material-icons" id="expind" style="transition:200ms linear"> chevron_right </span>
+            </a>
+            <div class="exp1 exp" style="display:none">
+                <a>API Keys </a>
+                <a>API Keys </a>
+            </div>
+        </section>
+        <main> Here we go </main>
+        <!-- Site footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h6>Address</h6>
+                        <p class="text-justify">Address here</p>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <h6>Phone</h6>
+                        <p class="text-justify">Address here</p>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <h6>For Admission Enquiry</h6>
+                        <p class="text-justify">Address here</p>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <h6>E-Mail</h6>
+                        <p class="text-justify">Address here</p>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Navigation</h6>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="http://scanfcode.com/category/c-language/">C</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/category/front-end-development/">UI Design</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/category/back-end-development/">PHP</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/category/java-programming-language/">Java</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/category/android/">Android</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/category/templates/">Templates</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Quick Links</h6>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="http://scanfcode.com/about/">About Us</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/contact/">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/sitemap/">Sitemap</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved with JPS. </p>
+                        <p class="copyright-text">Powered by <a href="https://extremekrish.github.io">Extreme_Krish</a></p>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <ul class="social-icons">
+                            <li>
+                                <a class="facebook" href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="twitter" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dribbble" href="#">
+                                    <i class="fa fa-dribbble"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="linkedin" href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script>
+            var drawer_open = false;
+            $(".menu").click(function() {
+                if (drawer_open == false) {
+                    document.getElementById("drawer").style.right = "0";
+                    drawer_open = true;
+                } else {
+                    document.getElementById("drawer").style.right = "-240px";
+                    drawer_open = false;
+                }
+            });
 
-    
-    <section style="margin-top:72px; padding:0px 16px;" >
-Here we go....
-    </section>
-    <script>
-        function toggleDrawer() {
-            var drawer = document.querySelector('.drawer');
-            var overlay = document.querySelector('.overlay');
-
-            if (drawer.style.right === '-262px') {
-                drawer.style.right = '0';
-                overlay.classList.add('active');
-            } else {
-                drawer.style.right = '-262px';
-                overlay.classList.remove('active');
+            function expand(obj) {
+                if (document.querySelector(obj).style.display == "none") {
+                    document.querySelector(obj).style.display = "block";
+                    document.querySelector("#expind").style.transform = 'rotate(90deg)';
+                } else {
+                    document.querySelector(obj).style.display = "none";
+                    document.querySelector("#expind").style.transform = 'rotate(0deg)';
+                }
             }
-        }
+            var search_open = false;
 
-        function closeDrawer() {
-            var drawer = document.querySelector('.drawer');
-            var overlay = document.querySelector('.overlay');
-
-          drawer.style.right = '-262px';
-            overlay.classList.remove('active');
-        }
-    </script>
-</body>
+            function searchToggle() {
+                if (drawer_open == false) {
+                    document.getElementById("toolbar2").style.display = "flex";
+                    drawer_open = true;
+                } else {
+                    document.getElementById("toolbar2").style.display = "none";
+                    document.getElementById("search").value = "";
+                    drawer_open = false;
+                }
+            }
+        </script>
+    </body>
 </html>
